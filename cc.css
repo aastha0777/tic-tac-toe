@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #e965a7, #af326e);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  color: #0f0e0f;
+  margin-bottom: 30px;
+}
+
+.game-container {
+  background-color: #ecc3e5;
+  border: 3px solid #1b191a;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(3, 120px);
+  gap: 12px;
+}
+
+.cell {
+  background-color: #fdf6f9;
+  border: 2px solid #110f10;
+  border-radius: 12px;
+  font-size: 3em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.cell:hover {
+  background-color: #c3caa0;
+  transform: scale(1.05);
+}
+
+.cell.pink {
+  color: #d1255f;
+}
+
+.cell.grey {
+  color: #383333;
+}
+
+.status {
+  margin-top: 30px;
+  font-size: 1.2em;
+  color: #0a0a0a;
+  text-align: center;
+  font-weight: 500;
+}
+
+.reset-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #e66892;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: #585455;
+}
+
+/* Win Line */
+.win-line {
+  position: absolute;
+  width: 300px;
+  height: 6px;
+  background-color: #ff2e70;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.4s ease, opacity 0.2s ease;
+  z-index: 10;
+  opacity: 0;
+}
+
+.win-line.active {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Highlight winning cells */
+.cell.winner {
+  background-color: #dffa96 !important;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px 3px #d1eb74;
+  }
+  to {
+    box-shadow: 0 0 20px 6px #cef58e;
+  }
+}
